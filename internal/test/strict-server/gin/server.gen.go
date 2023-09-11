@@ -338,7 +338,7 @@ func (response JSONExample200JSONResponse) VisitJSONExampleResponse(w http.Respo
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 
-	return json.NewEncoder(w).Encode(response)
+	return json.NewEncoder(w).Encode(Example(response))
 }
 
 type JSONExample400Response = BadrequestResponse
@@ -410,7 +410,7 @@ func (response MultipleRequestAndResponseTypes200JSONResponse) VisitMultipleRequ
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 
-	return json.NewEncoder(w).Encode(response)
+	return json.NewEncoder(w).Encode(Example(response))
 }
 
 type MultipleRequestAndResponseTypes200FormdataResponse Example

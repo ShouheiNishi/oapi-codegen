@@ -265,7 +265,7 @@ func (response JSONExample200JSONResponse) VisitJSONExampleResponse(ctx iris.Con
 	ctx.ResponseWriter().Header().Set("Content-Type", "application/json")
 	ctx.StatusCode(200)
 
-	return ctx.JSON(&response)
+	return ctx.JSON((*Example)(&response))
 }
 
 type JSONExample400Response = BadrequestResponse
@@ -337,7 +337,7 @@ func (response MultipleRequestAndResponseTypes200JSONResponse) VisitMultipleRequ
 	ctx.ResponseWriter().Header().Set("Content-Type", "application/json")
 	ctx.StatusCode(200)
 
-	return ctx.JSON(&response)
+	return ctx.JSON((*Example)(&response))
 }
 
 type MultipleRequestAndResponseTypes200FormdataResponse Example
