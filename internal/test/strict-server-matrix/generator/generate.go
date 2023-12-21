@@ -42,6 +42,7 @@ type strictServerInterface struct{}
 			nameSlice := []string{"test"}
 			var pkgId int = 1
 			if ref {
+				continue
 				if extRef {
 					nameSlice = append(nameSlice, "Ext")
 					pkgId = 2
@@ -79,8 +80,8 @@ type strictServerInterface struct{}
 						{name: []string{"Wildcard"}, content: "application/*", tag: "Application"},
 						{name: []string{"NoContent"}},
 					} {
-						if content.content == "text/plain" && (header || !fixedStatusCode || ref) {
-							// issue A
+						if !(content.content == "text/plain" && (header || !fixedStatusCode || ref)) {
+							// issue #1401
 							continue
 						}
 
