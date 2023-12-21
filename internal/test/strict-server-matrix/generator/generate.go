@@ -68,16 +68,16 @@ type strictServerInterface struct{}
 						content string
 						tag     string
 					}{
-						{name: []string{"JSON"}, content: "application/json", tag: "JSON"},
-						{name: []string{"Special", "JSON"}, content: "application/test+json", tag: "ApplicationTestPlusJSON"},
-						{name: []string{"Formdata"}, content: "application/x-www-form-urlencoded", tag: "Formdata"},
-						{name: []string{"Multipart"}, content: "multipart/test", tag: "Multipart"},
-						// issue B
-						// {name: []string{"Wildcard", "Multipart"}, content: "multipart/*", tag: "Multipart"},
-						{name: []string{"Text"}, content: "text/plain", tag: "Text"},
-						{name: []string{"Other"}, content: "application/test", tag: "Applicationtest"},
-						{name: []string{"Wildcard"}, content: "application/*", tag: "Application"},
-						{name: []string{"NoContent"}},
+						// {name: []string{"JSON"}, content: "application/json", tag: "JSON"},
+						// {name: []string{"Special", "JSON"}, content: "application/test+json", tag: "ApplicationTestPlusJSON"},
+						// {name: []string{"Formdata"}, content: "application/x-www-form-urlencoded", tag: "Formdata"},
+						// {name: []string{"Multipart"}, content: "multipart/test", tag: "Multipart"},
+						// issue #1403
+						{name: []string{"Wildcard", "Multipart"}, content: "multipart/*", tag: "Multipart"},
+						// {name: []string{"Text"}, content: "text/plain", tag: "Text"},
+						// {name: []string{"Other"}, content: "application/test", tag: "Applicationtest"},
+						// {name: []string{"Wildcard"}, content: "application/*", tag: "Application"},
+						// {name: []string{"NoContent"}},
 					} {
 						if content.content == "text/plain" && (header || !fixedStatusCode || ref) {
 							// issue A
@@ -214,7 +214,7 @@ type strictServerInterface struct{}
 
 						if header || !fixedStatusCode ||
 							content.content == "application/test" || content.content == "application/*" ||
-							content.content == "multipart/*" || content.content == "" {
+							/* issue #1403, content.content == "multipart/*" || */ content.content == "" {
 							resRet += " {\n"
 							if body != "" {
 								resRet += fmt.Sprintf("Body: %s,\n", body)
