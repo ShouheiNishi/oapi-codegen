@@ -43,6 +43,7 @@ type strictServerInterface struct{}
 			var pkgId int = 1
 			if ref {
 				if extRef {
+					continue
 					nameSlice = append(nameSlice, "Ext")
 					pkgId = 2
 				} else {
@@ -84,8 +85,8 @@ type strictServerInterface struct{}
 							continue
 						}
 
-						if content.content == "application/x-www-form-urlencoded" && ref {
-							// issue C
+						if !(content.content == "application/x-www-form-urlencoded" && ref) {
+							// issue #1402
 							continue
 						}
 
