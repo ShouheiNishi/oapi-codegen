@@ -20,6 +20,9 @@ type TestSchema struct {
 	Field2 int    `json:"field2"`
 }
 
+// TestRespExtFixedJSON defines model for testRespExtFixedJSON.
+type TestRespExtFixedJSON = TestSchema
+
 // RequestEditorFn  is the function signature for the RequestEditor callback function
 type RequestEditorFn func(ctx context.Context, req *http.Request) error
 
@@ -263,6 +266,8 @@ func HandlerWithOptions(si ServerInterface, options GorillaServerOptions) http.H
 
 	return r
 }
+
+type TestRespExtFixedJSONJSONResponse TestSchema
 
 // StrictServerInterface represents all server handlers.
 type StrictServerInterface interface {

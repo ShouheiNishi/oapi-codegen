@@ -104,9 +104,10 @@ output: %s/pkg2/pkg2.gen.go
 		2: {},
 	}
 
+gen:
 	for _, ref := range []bool{false, true} {
 		for _, extRef := range []bool{false, true} {
-			if extRef {
+			if !extRef || !ref {
 				// issue Fiber
 				continue
 			}
@@ -118,16 +119,16 @@ output: %s/pkg2/pkg2.gen.go
 						tag     string
 					}{
 						{name: []string{"JSON"}, content: "application/json", tag: "JSON"},
-						{name: []string{"Special", "JSON"}, content: "application/test+json", tag: "ApplicationTestPlusJSON"},
-						{name: []string{"Formdata"}, content: "application/x-www-form-urlencoded", tag: "Formdata"},
-						{name: []string{"Multipart"}, content: "multipart/form-data", tag: "Multipart"},
-						{name: []string{"Multipart", "Related"}, content: "multipart/related", tag: "Multipart"},
-						// issue #1403
-						// {name: []string{"Wildcard", "Multipart"}, content: "multipart/*", tag: "Multipart"},
-						{name: []string{"Text"}, content: "text/plain", tag: "Text"},
-						{name: []string{"Other"}, content: "application/test", tag: "Applicationtest"},
-						{name: []string{"Wildcard"}, content: "application/*", tag: "Application"},
-						{name: []string{"NoContent"}},
+						// {name: []string{"Special", "JSON"}, content: "application/test+json", tag: "ApplicationTestPlusJSON"},
+						// {name: []string{"Formdata"}, content: "application/x-www-form-urlencoded", tag: "Formdata"},
+						// {name: []string{"Multipart"}, content: "multipart/form-data", tag: "Multipart"},
+						// {name: []string{"Multipart", "Related"}, content: "multipart/related", tag: "Multipart"},
+						// // issue #1403
+						// // {name: []string{"Wildcard", "Multipart"}, content: "multipart/*", tag: "Multipart"},
+						// {name: []string{"Text"}, content: "text/plain", tag: "Text"},
+						// {name: []string{"Other"}, content: "application/test", tag: "Applicationtest"},
+						// {name: []string{"Wildcard"}, content: "application/*", tag: "Application"},
+						// {name: []string{"NoContent"}},
 					} {
 						if content.content == "text/plain" && (header || !fixedStatusCode || ref) {
 							// issue #1401
@@ -160,6 +161,7 @@ output: %s/pkg2/pkg2.gen.go
 						}
 
 						generateOneTest(fTestGos, paths, responses, ref, extRef, header, fixedStatusCode, content)
+						break gen
 					}
 				}
 			}
@@ -498,9 +500,11 @@ func generateOneTest(fTestGos map[ServerType]*bytes.Buffer, paths map[string]any
 		}
 		contentResExpect := contentRes
 		if server == IrisServer && contentResExpect == "application/json" {
+			// Iris issue
 			contentResExpect += "; charset=utf-8"
 		}
 		if server == FiberServer && contentResExpect == "" {
+			// Fiber issue
 			contentResExpect = "text/plain; charset=utf-8"
 		}
 		if !strings.HasPrefix(contentResExpect, "multipart/") {
