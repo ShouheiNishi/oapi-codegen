@@ -104,6 +104,7 @@ output: %s/pkg2/pkg2.gen.go
 		2: {},
 	}
 
+all:
 	for _, ref := range []bool{false, true} {
 		for _, extRef := range []bool{false, true} {
 			if extRef {
@@ -154,12 +155,13 @@ output: %s/pkg2/pkg2.gen.go
 							continue
 						}
 
-						if content.content == "application/test+json" {
+						if content.content != "application/test+json" {
 							// issue Iris + Fiber
 							continue
 						}
 
 						generateOneTest(fTestGos, paths, responses, ref, extRef, header, fixedStatusCode, content)
+						break all
 					}
 				}
 			}
