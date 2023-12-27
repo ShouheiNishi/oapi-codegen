@@ -149,7 +149,7 @@ output: %s/pkg2/pkg2.gen.go
 							continue
 						}
 
-						if header && content.content == "" {
+						if !(header && content.content == "") {
 							// issue Iris
 							continue
 						}
