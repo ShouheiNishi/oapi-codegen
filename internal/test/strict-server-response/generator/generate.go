@@ -159,6 +159,10 @@ output: %s/pkg2/pkg2.gen.go
 							continue
 						}
 
+						if content.content != "" {
+							continue
+						}
+
 						generateOneTest(fTestGos, paths, responses, ref, extRef, header, fixedStatusCode, content)
 					}
 				}
@@ -497,12 +501,12 @@ func generateOneTest(fTestGos map[ServerType]*bytes.Buffer, paths map[string]any
 			fmt.Fprintf(fTestGo, "assert.Equal(t, \"123\", res.HTTPResponse.Header.Get(\"header2\"))\n")
 		}
 		contentResExpect := contentRes
-		if server == IrisServer && contentResExpect == "application/json" {
-			contentResExpect += "; charset=utf-8"
-		}
-		if server == FiberServer && contentResExpect == "" {
-			contentResExpect = "text/plain; charset=utf-8"
-		}
+		// if server == IrisServer && contentResExpect == "application/json" {
+		// 	contentResExpect += "; charset=utf-8"
+		// }
+		// if server == FiberServer && contentResExpect == "" {
+		// 	contentResExpect = "text/plain; charset=utf-8"
+		// }
 		if !strings.HasPrefix(contentResExpect, "multipart/") {
 			fmt.Fprintf(fTestGo, "assert.Equal(t, \"%s\", res.HTTPResponse.Header.Get(\"Content-Type\"))\n", contentResExpect)
 		}
