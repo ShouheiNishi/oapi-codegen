@@ -134,7 +134,7 @@ output: %s/pkg2/pkg2.gen.go
 							continue
 						}
 
-						if content.content == "text/plain" {
+						if content.content != "text/plain" {
 							// issue Fiber (2)
 							continue
 						}
