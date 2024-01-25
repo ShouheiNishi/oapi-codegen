@@ -1,0 +1,11 @@
+openapi: "3.0.1"
+components:
+  schemas:
+    Test:
+      type: object
+      required:
+        - NullableRequired
+      properties:
+        NullableRequired:
+          type: integer
+          nullable: true
