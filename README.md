@@ -1,3 +1,22 @@
+This is fork of [oapi-codegen](https://github.com/deepmap/oapi-codegen)
+for [Openapi5G](https://github.com/ShouheiNishi/openapi5g).
+
+Base version is [v2.0.0](https://github.com/deepmap/oapi-codegen/releases/tag/v2.0.0).
+
+The fixes for Openapi5G are here.
+
+* https://github.com/deepmap/oapi-codegen/pull/1203
+* https://github.com/ShouheiNishi/oapi-codegen/commit/ec6dc901f4a051be00a292c82de059ea1c33d754 (Partially fix for https://github.com/deepmap/oapi-codegen/issues/1250)
+* https://github.com/deepmap/oapi-codegen/pull/1299
+* https://github.com/deepmap/oapi-codegen/pull/1300
+* https://github.com/deepmap/oapi-codegen/pull/1303
+* https://github.com/deepmap/oapi-codegen/pull/1330
+* https://github.com/deepmap/oapi-codegen/pull/1385
+* https://github.com/deepmap/oapi-codegen/pull/1411
+* https://github.com/deepmap/oapi-codegen/pull/1412
+
+---
+
 ## OpenAPI Client and Server Code Generator
 
 ⚠️ This README may be for the latest development version, which may contain
