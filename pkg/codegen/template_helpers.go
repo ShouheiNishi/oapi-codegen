@@ -136,7 +136,7 @@ testWildcardResponseLoop:
 		}
 	}
 
-	for responseName, responseRef := range responses {
+	for responseName, responseRef := range responses.Map() {
 		keyPrefix := ""
 		switch responseName {
 		case "default":
