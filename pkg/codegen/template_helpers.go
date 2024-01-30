@@ -20,9 +20,10 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/deepmap/oapi-codegen/v2/pkg/util"
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"
+
+	"github.com/deepmap/oapi-codegen/v2/pkg/util"
 )
 
 const (
@@ -124,7 +125,7 @@ func genResponseUnmarshal(op *OperationDefinition) string {
 	hasWildcardResponse := false
 testWildcardResponseLoop:
 	for _, responseName := range []string{"default", "1XX", "2XX", "3XX", "4XX", "5XX"} {
-		if responseRef := responses[responseName]; responseRef != nil &&
+		if responseRef := responses.Value(responseName); responseRef != nil &&
 			responseRef.Value != nil {
 			for contentTypeName := range responseRef.Value.Content {
 				if typeDefinition := typeDefTable[responseName][contentTypeName]; typeDefinition != nil {

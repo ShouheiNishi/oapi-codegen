@@ -1,17 +1,15 @@
 This is fork of [oapi-codegen](https://github.com/deepmap/oapi-codegen)
 for [Openapi5G](https://github.com/ShouheiNishi/openapi5g).
 
-Base version is [v2.0.0](https://github.com/deepmap/oapi-codegen/releases/tag/v2.0.0).
+Base version is [d326c01](https://github.com/deepmap/oapi-codegen/tree/d326c01d279aa0c6cff8c1cd1971fccacdd2409e).
 
 The fixes for Openapi5G are here.
 
 * https://github.com/deepmap/oapi-codegen/pull/1203
 * https://github.com/ShouheiNishi/oapi-codegen/commit/ec6dc901f4a051be00a292c82de059ea1c33d754 (Partially fix for https://github.com/deepmap/oapi-codegen/issues/1250)
-* https://github.com/deepmap/oapi-codegen/pull/1299
 * https://github.com/deepmap/oapi-codegen/pull/1300
 * https://github.com/deepmap/oapi-codegen/pull/1303
 * https://github.com/deepmap/oapi-codegen/pull/1330
-* https://github.com/deepmap/oapi-codegen/pull/1385
 * https://github.com/deepmap/oapi-codegen/pull/1411
 * https://github.com/deepmap/oapi-codegen/pull/1412
 
@@ -952,7 +950,7 @@ output-options:
     # using a local file
     client-with-responses.tmpl: /home/username/workspace/templatesProject/my-client-with-responses.tmpl
 
-    # The following are referencing a versuion of the default
+    # The following are referencing a version of the default
     # client-with-responses.tmpl file, but loaded in through
     # github's raw.githubusercontent.com. The general form
     # to use raw.githubusercontent.com is as follows
