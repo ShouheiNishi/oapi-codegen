@@ -1,0 +1,16 @@
+openapi: "3.0.1"
+info:
+  version: 1.0.0
+  title: Test2
+paths:
+  /test:
+    get:
+      operationId: Test
+      parameters:
+        - name: param
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string

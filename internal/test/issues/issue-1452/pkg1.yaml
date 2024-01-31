@@ -1,0 +1,7 @@
+openapi: "3.0.1"
+info:
+  version: 1.0.0
+  title: Test1
+paths:
+  /test:
+    $ref: "pkg2.yaml#/paths/~1test"

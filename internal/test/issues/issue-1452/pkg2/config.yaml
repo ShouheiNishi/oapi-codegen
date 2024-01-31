@@ -1,0 +1,7 @@
+package: pkg2
+generate:
+  models: true
+  chi-server: true
+output: pkg2.gen.go
+output-options:
+  skip-prune: true
